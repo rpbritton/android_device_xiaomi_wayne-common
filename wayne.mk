@@ -48,6 +48,10 @@ TARGET_SCREEN_WIDTH := 1080
 
 TARGET_BOOT_ANIMATION_RES := 1080
 
+# Improve live wallpaper speed
+PRODUCT_PRODUCT_PROPERTIES += \
+    debug.sf.latch_unsignaled=0
+
 # Consumerir
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-impl \
