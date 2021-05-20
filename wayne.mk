@@ -48,6 +48,12 @@ TARGET_SCREEN_WIDTH := 1080
 
 TARGET_BOOT_ANIMATION_RES := 1080
 
+# Enable blur
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=1 \
+    ro.sf.blurs_are_expensive=1 \
+    debug.sf.disable_backpressure=1
+
 # Improve live wallpaper speed
 PRODUCT_PRODUCT_PROPERTIES += \
     debug.sf.latch_unsignaled=0
