@@ -22,17 +22,19 @@
 # definition file).
 #
 
-# Device Path
-DEVICE_PATH := device/xiaomi/wayne-common
+# Inherit from sdm660-common
+$(call inherit-product, device/xiaomi/sdm660-common/sdm660.mk)
+
+# Inherit properties
+$(call inherit-product, $(LOCAL_PATH)/properties.mk)
 
 # APEX
 ENABLE_APEX := false
 
-
 # Audio
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec.xml \
-    $(DEVICE_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+    $(LOCAL_PATH)/configs/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2160
@@ -53,24 +55,18 @@ EAS_POWERHINT_VARIANT := sdm660
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
 
-# Inherit from sdm660-common
-$(call inherit-product, device/xiaomi/sdm660-common/sdm660.mk)
-
-# Inherit properties
-$(call inherit-product, $(DEVICE_PATH)/properties.mk)
-
 # Init
 PRODUCT_PACKAGES += \
     init.device.rc
 
 # Media
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
+    $(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay \
-    $(DEVICE_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-pe
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -86,11 +82,11 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Sensors
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf
+    $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH)
+    $(LOCAL_PATH)
 
 # Vibrator
 PRODUCT_PACKAGES += \
