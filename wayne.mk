@@ -13,7 +13,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-aosp
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -25,6 +25,8 @@ PRODUCT_COPY_FILES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
+
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Consumerir
 BOARD_HAVE_IR := true
